@@ -12,11 +12,16 @@ randomQuoteApp.controller('randomQuoteCtrl', ['$scope', '$http', '$window',
   }
 
   $scope.getQuote = () => {
-    let url = "http://quotes.stormconsultancy.co.uk/random.json"
-    $http.get( url, { method: 'GET' } )
-    .then( (res) => {
-      $scope.quote = res.data;
-      addPastQuote($scope.quote);
+    let url = "http://quotes.stormconsultancy.co.uk/random.json";
+    fetch(url).then( (res) => res.json() )
+      .then( (data) => {
+        console.log('data',data)
+        $scope.quote = data;
+        console.log('quote',$scope.quote);
+        addPastQuote($scope.quote);
+        $scope.$apply();
+      }, (error) => {
+      console.log('error',error);
     });
   }
 
