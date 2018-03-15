@@ -16,7 +16,8 @@
 <body>
   <div class="container-fluid d-flex justify-content-center align-items-center" ng-controller="randomQuoteCtrl" ng-init="init()">
     <div class="row">
-      <div id="main" class="col-md-10 col-12">
+
+      <div id="main" class="col-md-8 col-12">
         <h2 class="margin-bottom-25 mb-5">Nacho Betancourt's random quote page</h2>
         <div class="card" ng-if="quote">
           <div class="card-body">
@@ -43,15 +44,17 @@
           </a>
         </div>
       </div>
-      <div id="past-quotes" class="col-md-2 col-12" ng-if="pastQuotes.length > 1">
+
+      <div id="past-quotes" class="col-md-4 col-12" ng-if="pastQuotes.length > 1">
         <h3>Past quotes</h3>
-        <p ng-repeat="q in pastQuotes" ng-if="!$last">
-          "{{q.quote}}" - {{q.author}}
+        <p ng-repeat="q in pastQuotes.slice().reverse()" ng-if="q.id != quote.id">
+          <span ng-click="selectPastQuote(q)">"{{q.quote}}"</span> - <span class="text-muted text-small">{{q.author}}</span>
           <a ng-click="redirect(quote.permalink)">
             <i class="fas fa-link"></i>
           </a>
         </p>
       </div>
+
     </div>
   <div>
 </body>

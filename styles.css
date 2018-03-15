@@ -1,9 +1,16 @@
-.container-fluid {
-  background-color: whitesmoke;
-  height: 100vh;
+.card {
+  border-radius: 0 !important;
 }
 
 .fa-link {
   font-size: 0.5em;
   color: dodgerblue;
+}
+
+@media only screen and (min-width: 768px) {
+  #past-quotes {
+    max-height: 100vh;
+    overflow-y: scroll;
+    text-align: right;
+  }
 }

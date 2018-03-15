@@ -19,8 +19,12 @@ randomQuoteApp.controller('randomQuoteCtrl', ['$scope', '$http', '$window',
         addPastQuote($scope.quote);
         $scope.$apply();
       }, (error) => {
-      console.log('error',error);
+        console.log('error',error);
     });
+  }
+
+  $scope.selectPastQuote = (quote) => {
+    $scope.quote = quote;
   }
 
   $scope.redirect = (link) => {
@@ -42,8 +46,8 @@ randomQuoteApp.controller('randomQuoteCtrl', ['$scope', '$http', '$window',
   }
 
   let addPastQuote = (quote) => {
+    $scope.pastQuotes = $scope.pastQuotes.filter( x => x.id != quote.id );
     $scope.pastQuotes.push($scope.quote);
-    $scope.pastQuotes = [...$scope.pastQuotes];
   }
 
 }]);
