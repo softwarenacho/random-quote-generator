@@ -15,9 +15,7 @@ randomQuoteApp.controller('randomQuoteCtrl', ['$scope', '$http', '$window',
     let url = "http://quotes.stormconsultancy.co.uk/random.json";
     fetch(url).then( (res) => res.json() )
       .then( (data) => {
-        console.log('data',data)
         $scope.quote = data;
-        console.log('quote',$scope.quote);
         addPastQuote($scope.quote);
         $scope.$apply();
       }, (error) => {
@@ -33,7 +31,7 @@ randomQuoteApp.controller('randomQuoteCtrl', ['$scope', '$http', '$window',
   $scope.share = (site) => {
     let sites = {
       twitter: "https://twitter.com/intent/tweet?text=",
-      facebook: "https://www.facebook.com/sharer/sharer.php?u=nacho.software&quote="
+      facebook: "https://www.facebook.com/sharer/sharer.php?u=https://softwarenacho.github.io/random-quote-generator/&quote="
     }
     let url = sites[site] + formattedQuote();
     $scope.redirect(url);
