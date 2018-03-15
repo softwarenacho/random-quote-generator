@@ -1,0 +1,9 @@
+.container-fluid {
+  background-color: whitesmoke;
+  height: 100vh;
+}
+
+.fa-link {
+  font-size: 0.5em;
+  color: dodgerblue;
+}

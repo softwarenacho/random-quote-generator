@@ -1,0 +1,59 @@
+<!doctype html>
+<html ng-app="randomQuoteApp">
+<head>
+  <title>Nacho's random quotes</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+  <script src="controller.js"></script>
+  <link rel="stylesheet" type="text/css" href="styles.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+</head>
+<body>
+  <div class="container-fluid d-flex justify-content-center align-items-center" ng-controller="randomQuoteCtrl" ng-init="init()">
+    <div class="row">
+      <div id="main" class="col-md-10 col-12">
+        <h2 class="margin-bottom-25 mb-5">Nacho Betancourt's random quote page</h2>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">"{{quote.quote}}"</h5>
+            <a class="card-text">
+              {{quote.author}}
+              <a ng-click="redirect(quote.permalink)">
+                <i class="fas fa-link"></i>
+              </a>
+            </a>
+          </div>
+        </div>
+        <div class="action-btns m-3 d-flex justify-content-around" ng-if="quote">
+          <a ng-click="share('twitter')"
+             target="_blank">
+            <i class="fab fa-twitter" style="color:#1DA1F2;"></i>
+          </a>
+          <a ng-click="share('facebook')"
+             target="_blank">
+            <i class="fab fa-facebook" style="color:#3b5998;"></i>
+          </a>
+          <a ng-click="getQuote()">
+            <i class="fa fa-sync text-success"></i>
+          </a>
+        </div>
+      </div>
+      <div id="past-quotes" class="col-md-2 col-12" ng-if="pastQuotes.length > 1">
+        <h3>Past quotes</h3>
+        <p ng-repeat="q in pastQuotes" ng-if="!$last">
+          "{{q.quote}}" - {{q.author}}
+          <a ng-click="redirect(quote.permalink)">
+            <i class="fas fa-link"></i>
+          </a>
+        </p>
+      </div>
+    </div>
+  <div>
+</body>
+</html>
+
