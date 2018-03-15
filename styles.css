@@ -2,6 +2,10 @@
   border-radius: 0 !important;
 }
 
+.card-title {
+  line-height: 1.5;
+}
+
 .fa-link {
   font-size: 0.5em;
   color: dodgerblue;
