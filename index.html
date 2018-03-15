@@ -47,7 +47,7 @@
 
       <div id="past-quotes" class="col-md-4 col-12" ng-if="pastQuotes.length > 1">
         <h3>Past quotes</h3>
-        <p ng-repeat="q in pastQuotes.slice().reverse()" ng-if="q.id != quote.id">
+        <p ng-repeat="q in pastQuotes | orderBy: '-'" ng-if="q.id != quote.id">
           <span ng-click="selectPastQuote(q)">"{{q.quote}}"</span> - <span class="text-muted text-small">{{q.author}}</span>
           <a ng-click="redirect(quote.permalink)">
             <i class="fas fa-link"></i>
