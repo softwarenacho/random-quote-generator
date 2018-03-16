@@ -13,8 +13,7 @@ randomQuoteApp.controller('randomQuoteCtrl', ['$scope', '$http', '$window',
 
   $scope.getQuote = () => {
     let url = " https://nacho-api.herokuapp.com/api/quotes-api";
-    fetch(url, {mode: 'no-cors'})
-    .then( (res) => res.json() )
+    fetch(url).then( (res) => res.json() )
       .then( (data) => {
         $scope.quote = data;
         addPastQuote($scope.quote);
